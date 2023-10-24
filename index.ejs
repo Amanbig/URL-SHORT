@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+    <header>
+        <h1>URL SHORTENER</h1>
+    </header>
+
+    <main>
+        <form action="/url" method="post" id="url-shortener-form">
+            <label for="url">Enter your URL:</label>
+            <input type="url" id="url" name="url" placeholder="https://example.com" required>
+            <button type="submit">Shorten</button>
+        </form>
+
+        <div class="shortened-url">
+            <p>Your shortened URL:</p>
+            <% if (data && data.url) { %>
+                <a href="<%= data.url %>" id="short-url"><%= data.url %></a>
+            <% } %>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div class="visit-history">
+            <p>Visit History:</p>
+            <br>
+            <ul style="list-style: none;">
+                <% if (data && data.visitHistory && data.visitHistory.length > 0) { %>
+                    <% data.visitHistory.forEach((visit, index) => { %>
+                        <li><%= index + 1 %>. Visited on <%= new Date(visit.timestamp).toLocaleString() %></li>
+                    <% }); %>
+                <% } else { %>
+                    <li>No visit history available.</li>
+                <% } %>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p><em>Created By:</em> Amanpreet Singh</p>
+    </footer>
+</body>
+</html>
