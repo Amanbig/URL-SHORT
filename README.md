@@ -14,7 +14,7 @@ and then you need to have installed mongodb in your system for using it.
  
 Refer to this link for installation
 
-https://www.mongodb.com/
+https://www.mongodb.com/try/download/community
 
 ## For Running the website
 You need to type this command
