@@ -22,6 +22,7 @@
             <p>Your shortened URL:</p>
             <% if (data && data.url) { %>
                 <a href="<%= data.url %>" id="short-url"><%= data.url %></a>
+                <button onclick="copyToClipboard()">Copy</button>
             <% } %>
         </div>
         <br>
@@ -45,5 +46,21 @@
     <footer>
         <p><em>Created By:</em> Amanpreet Singh</p>
     </footer>
+    <script>
+        function copyToClipboard() {
+            var urlElement = document.getElementById("short-url");
+            var range = document.createRange();
+            range.selectNode(urlElement);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            try {
+                document.execCommand('copy');
+                alert('URL copied to clipboard');
+            } catch (err) {
+                console.error('Unable to copy URL');
+            }
+            window.getSelection().removeAllRanges();
+        }
+    </script>
 </body>
 </html>
